@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@v3.85.0/dist/phaser.min.js"></script>
+</head>
+<body>
+
+    <script>
+    class mainScene extends Phaser.Scene
+    {
+        preload ()
+        {
+            this.load.image("beaker", "./img/testtube.png");
+            let nums = [];
+        }
+
+        create ()
+        {
+            generate_num();
+            this.add.sprite(200, 300, "beaker").setInteractive();
+            this.add.sprite(400, 300, "beaker").setInteractive();
+            this.add.sprite(600, 300, "beaker").setInteractive();
+            this.input.on('gameobjectover', (pointer, gameObject) =>
+            {
+                gameObject.setTint(0xff0000);
+            });
+            this.input.on('gameobjectout', (pointer, gameObject) =>
+            {
+                gameObject.clearTint();
+            });
+        }
+
+        update ()
+        {
+        }
+
+    }
+
+    function generate_num(n) {
+        let sum = 10;
+        let num = [];
+        sum = sum - n - 1;
+        for (let i = 0; i < n; i++) {
+            rand_num = Math.floor(Math.random()*sum)+1;
+            num.append();
+        }
+    }
+
+    const config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        backgroundColor: "#FFFFFF",
+        scene: mainScene
+    };
+    
+
+    const game = new Phaser.Game(config);
+    </script>
+
+</body>
+</html>
