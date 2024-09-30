@@ -11,13 +11,11 @@
         preload ()
         {
             this.load.image("beaker", "./img/testtube.png");
-            let nums = generate_num(3);
-            console.log(nums);
         }
 
         create ()
         {
-            generate_num();
+            let nums = generate_num(3);
             this.add.sprite(200, 300, "beaker").setInteractive();
             this.add.sprite(400, 300, "beaker").setInteractive();
             this.add.sprite(600, 300, "beaker").setInteractive();
