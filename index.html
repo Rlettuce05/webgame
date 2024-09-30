@@ -11,7 +11,8 @@
         preload ()
         {
             this.load.image("beaker", "./img/testtube.png");
-            let nums = [];
+            let nums = generate_num(3);
+            console.log(nums);
         }
 
         create ()
@@ -37,16 +38,22 @@
     }
 
     function generate_num(n) {
+        if (n <= 0 || n > 10) {
+            return "エラー: nは1から10の間である必要があります。";
+        }
+
         let sum = 10;
         let num = [];
-        sum = sum - n;
-        for (let i = 0; i < n; i++) {
-            let rand_num = Math.floor(Math.random() * (sum + 1)) + 1;
+
+        for (let i = 0; i < n - 1; i++) {
+            let max = sum - (n - i - 1);
+            let rand_num = Math.floor(Math.random() * (max - 1)) + 1;
             num.push(rand_num);
             sum -= rand_num;
         }
+        num.push(sum);
         return num;
-    }
+}
 
     const config = {
         type: Phaser.AUTO,
